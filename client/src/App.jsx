@@ -1,16 +1,19 @@
-import Courses from './components/Courses'
-import Dashboard from './components/Dashboard'
+import { Route, Routes } from 'react-router-dom'
+import Dashboard from './Routes/Dashboard'
 import NavBar from './components/Navbar'
-import SearchandFilter from './components/SearchAndFilter'
+import Landing from './Routes/Landing'
+
 
 function App() {
 
   return (
     <>
-      <NavBar />
-      <Dashboard />
-      <SearchandFilter/>
-      <Courses />
+      <Routes>
+        <Route path="/" element = {<NavBar />} >
+          <Route path="auth" element = {<Landing />} />
+          <Route path="dashboard" element = {<Dashboard />} />
+        </Route>
+      </Routes>
     </>
   )
 }

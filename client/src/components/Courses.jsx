@@ -4,25 +4,25 @@ import { searchedString } from "../store/atoms/search.atom";
 
 const Courses = () => {
     const courses = useRecoilValue(searchedState);
-    const srarchString = useRecoilValue(searchedString);
+    const searchString = useRecoilValue(searchedString);
     const highlightName = (name) => {
-        const index = name.toLowerCase().indexOf(srarchString.toLowerCase());
+        const index = name.toLowerCase().indexOf(searchString.toLowerCase());
         if (index === -1) {
             return name;
         }
         return (
             <>
                 {name.substring(0, index)}
-                <span className="bg-blue-600 text-white  dark:bg-blue-500 dark:text-white">{name.substring(index, index + srarchString.length)}</span>
-                {name.substring(index + srarchString.length)}
+                <span className="bg-blue-600 text-white  dark:bg-blue-500 dark:text-white">{name.substring(index, index + searchString.length)}</span>
+                {name.substring(index + searchString.length)}
             </>
         )
     }
 
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-screen-lg mx-auto">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-screen-lg mx-auto border dark:border-gray-600"  style={{ maxHeight: '75vh' }}>
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                     <tr>
                         <th scope="col" className="px-6 py-3">
                             Subject code

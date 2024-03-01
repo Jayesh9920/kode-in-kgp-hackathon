@@ -35,6 +35,30 @@ const defaultValue = [
         name: 'Data Base management',
         credit: 4,
         avgCgpa: 8.9,
+    },
+    {
+        code: 'CS1236',
+        name: 'Operating Systems',
+        credit: 4,
+        avgCgpa: 8.9,
+    },
+    {
+        code: 'CS1237',
+        name: 'Computer Networks',
+        credit: 4,
+        avgCgpa: 8.9,
+    },
+    {
+        code: 'CS1238',
+        name: 'Artificial Intelligence',
+        credit: 4,
+        avgCgpa: 8.9,
+    },
+    {
+        code: 'CS1239',
+        name: 'Machine Learning',
+        credit: 4,
+        avgCgpa: 8.99,
     }
 ]
 
