@@ -41,12 +41,12 @@ const SearchandFilter = () => {
     const careerGoals = {
         "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MMT', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
         "Software Development": ["CS", "MA", "ECE"],
-        "Data Science / Analytics": ["MA", "CS", "EE"],
-        "Finance / Consulting": ["CS", "MA", "EE", "PH", "CY"],
-        "Management": ["CS", "MA", "EE", "PH", "CY"],
-        "Quantitative Trading": ["CS", "MA", "EE", "EC"],
-        "Embedded system": ["ECE", "EE", "CS"],
-        "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MMT", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
+        "Data Science / Analytics": ["MA", "CS"],
+        "Finance / Consulting": ["RE", "HS", "BM", "EP"],
+        "Management": ["RE", "HS", "BM", "EP"],
+        "Quantitative Trading": ["CS", "MA", "EC"],
+        "Embedded system": ["CS","MA" ,"ECE", "EE"],
+        "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MT", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
     };
 
 
