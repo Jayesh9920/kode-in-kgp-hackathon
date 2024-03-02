@@ -22,7 +22,7 @@ const Courses = () => {
         };
     }, []);
     const loaddata = async (e) => {
-        const {data, error} = await supabase.from('Colab Data').select('*')
+        const {data, error} = await supabase.from('Collab Data').select('*')
         console.log(error)
         setCourses(data)
         setAllCourses(data)
