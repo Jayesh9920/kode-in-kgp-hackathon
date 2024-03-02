@@ -40,12 +40,12 @@ const SearchandFilter = () => {
 
     const careerGoals = {
         "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MMT', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
-        "Software Development": ["CS", "MA", "EE"],
-        "Data Science / Analytics": ["CS", "MA", "EE", "PH", "CY"],
+        "Software Development": ["CS", "MA", "ECE"],
+        "Data Science / Analytics": ["MA", "CS", "EE"],
         "Finance / Consulting": ["CS", "MA", "EE", "PH", "CY"],
         "Management": ["CS", "MA", "EE", "PH", "CY"],
-        "Quantitative Trading": ["CS", "MA", "EE", "PH", "CY"],
-        "Embedded system": ["CS", "EE", "MA"],
+        "Quantitative Trading": ["CS", "MA", "EE", "EC"],
+        "Embedded system": ["ECE", "EE", "CS"],
         "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MMT", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
     };
 
@@ -61,9 +61,9 @@ const SearchandFilter = () => {
         }
     };
 
-    const handleCareerGoal = (e) => {
+const handleCareerGoal = (e) => {
         const selectedGoal = e.target.value;
-        const filteredSubject = allSubjects.filter(subject => careerGoals[selectedGoal].includes(subject.code.substring(0, 2)));
+        const filteredSubject = allSubjects.filter(subject => careerGoals[selectedGoal].includes(subject.dept_code));
         setFilteredSubjects(filteredSubject);
     };
 
