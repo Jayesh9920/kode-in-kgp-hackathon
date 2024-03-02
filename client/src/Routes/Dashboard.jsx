@@ -12,8 +12,6 @@ const supabase = createClient(Project_URL, Anon_KEY);
 const Dashboard = () => {
     const navigate = useNavigate();
 
-    let [course, setCourses] = useRecoilState(searchedState);
-
     useEffect(() => {
         let iscancelled = false;
         if (!iscancelled) {
@@ -31,17 +29,10 @@ const Dashboard = () => {
         if (data['session'] == null) {
             console.log('ice')
             navigate("/login")
-        }else{
-            loaddata()
         }
     }
 
-    const loaddata = async (e) => {
-        const {data, error} = await supabase.from('Colab Data').select('*').range(0,5)
-        console.log(error)
-        console.log(data)
-        console.log('oo')
-    }
+  
     
     return (
         <div>

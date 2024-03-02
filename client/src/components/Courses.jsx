@@ -1,11 +1,35 @@
-import { useRecoilValue } from "recoil";
-import { searchedState } from "../store/atoms/subject.atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { courseState, searchedState } from "../store/atoms/subject.atom";
 import { searchedString } from "../store/atoms/search.atom";
+import { useEffect } from "react";
+import { createClient } from "@supabase/supabase-js";
+const Project_URL = import.meta.env.VITE_APP_PROJECT_URL;
+const Anon_KEY = import.meta.env.VITE_APP_ANON_KEY;
+const supabase = createClient(Project_URL, Anon_KEY);
 const Courses = () => {
-    const courses = useRecoilValue(searchedState);
-    console.log('a')
-    console.log(courses)
+    const [courses, setCourses] = useRecoilState(searchedState);
+    const [allCourses, setAllCourses] = useRecoilState(courseState)
     const searchString = useRecoilValue(searchedString);
+
+
+    useEffect(()=>{
+        let iscancelled = false;
+        if (!iscancelled) {
+            loaddata()
+        }
+        return () => {
+            iscancelled = true
+        };
+    }, []);
+    const loaddata = async (e) => {
+        const {data, error} = await supabase.from('Colab Data').select('*')
+        console.log(error)
+        setCourses(data)
+        setAllCourses(data)
+        console.log('oo')
+    }
+
+
     const highlightName = (name) => {
         const index = name.toLowerCase().indexOf(searchString.toLowerCase());
         if (index === -1) {
