@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { courseState, searchedState } from "../store/atoms/subject.atom";
 import { searchedString } from "../store/atoms/search.atom";
 
 const SearchandFilter = () => {
     const [searchString, setSearchString] = useRecoilState(searchedString);
     const allSubjects = useRecoilValue(courseState);
-    const setFilteredSubjects = useSetRecoilState(searchedState);
+    const [selectedsub, setFilteredSubjects] = useRecoilState(searchedState);
     const [cgpa, setCgpa] = useState("");
 
     const coursesToDepartment = {
@@ -19,47 +19,62 @@ const SearchandFilter = () => {
         "Chemistry": "CY",
         "Civil Engineering": "CE",
         "Computer Science and Engineering": "CS",
+        "Cryogenic Engineering": "CR",
         "Electrical Engineering": "EE",
+        "Energy Science and Engineering": "EN",
+        "Environmental Studies": "EV",
+        "Exploration Geophysics": "EX",
         "Humanities and Social Sciences": "HS",
+        "Industrial Engineering and Management": "IM",
         "Mathematics and Computing": "MA",
         "Mechanical Engineering": "ME",
-        "Metallurgical and Materials Engineering": "MMT",
+        "Metallurgical and Materials Engineering": "MT",
         "Mining Engineering": "MI",
         "Ocean Engineering and Naval Architecture": "NA",
-        "Physics": "PH"
+        "Physics": "PH",
+        "Reliability Engineering": "RE",
+        "Rubber Technology": "RT",
+        "Geology": "GG",
     };
     
 
     const careerGoals = {
-        "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MM', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
+        "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MMT', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
         "Software Development": ["CS", "MA", "EE"],
         "Data Science / Analytics": ["CS", "MA", "EE", "PH", "CY"],
         "Finance / Consulting": ["CS", "MA", "EE", "PH", "CY"],
         "Management": ["CS", "MA", "EE", "PH", "CY"],
         "Quantitative Trading": ["CS", "MA", "EE", "PH", "CY"],
         "Embedded system": ["CS", "EE", "MA"],
-        "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MM", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
+        "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MMT", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
     };
 
+
+//  reccomment those courses which are greater than the cgpa
+// validate cgpa should be between 0 and 10
     const handleCgpaInput = (e) => {
-        const inputCgpa = e.target.value;
-        if (inputCgpa > 10 || inputCgpa < 0 || isNaN(inputCgpa)) {
-            alert("Please enter a valid CGPA between 0 and 10");
-        } else {
-            setCgpa(inputCgpa);
+        const cgpaInput = e.target.value;
+        if (cgpaInput === "" || (cgpaInput >= 0 && cgpaInput <= 10)) {
+            setCgpa(cgpaInput);
+            const filteredSubject = allSubjects.filter(subject => subject.median > cgpaInput);
+            setFilteredSubjects(filteredSubject);
         }
     };
 
     const handleCareerGoal = (e) => {
         const selectedGoal = e.target.value;
-        const filteredSubject = allSubjects.filter(subject => careerGoals[selectedGoal].includes(subject.dept_code));
+        const filteredSubject = allSubjects.filter(subject => careerGoals[selectedGoal].includes(subject.code.substring(0, 2)));
         setFilteredSubjects(filteredSubject);
     };
 
     const handleSearch = (e) => {
         const searchInput = e.target.value.toLowerCase();
         setSearchString(searchInput);
-        const filteredSubject = allSubjects.filter(subject => subject.course.toLowerCase().includes(searchInput));
+        if (searchInput === "") {
+            setFilteredSubjects(allSubjects);
+            return;
+        }
+        const filteredSubject = selectedsub.filter(subject => subject.course.toLowerCase().includes(searchInput));
         setFilteredSubjects(filteredSubject);
     };
 

@@ -1,13 +1,13 @@
 import { atom } from "recoil";
 const defaultValue = [
     {
+        EX: 13,
         A: 13,
         B: 13,
         C: 13,
         D: 13,
-        EX: 13,
-        F: 13,
         P: 13,
+        F: 13,
         ID: 1,
         avg: 7.4,
         median: 7.4,

@@ -57,8 +57,10 @@ const Courses = () => {
         )
     }
 
+
+
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-screen-lg mx-auto border dark:border-gray-600" style={{ maxHeight: '75vh' }}>
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-screen-lg mx-auto border dark:border-gray-600" style={{ maxHeight: '75vh', maxWidth: "70vw" }}>
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                     <tr>
@@ -80,6 +82,27 @@ const Courses = () => {
                         <th scope="col" className="px-6 py-3">
                             Students Enrolled
                         </th>
+                        <th scope="col" className="px-6 py-3">
+                            EX
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            A
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            B
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            C
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            D
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            P
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            F
+                        </th>f
                     </tr>
                 </thead>
                 <tbody>
@@ -105,7 +128,27 @@ const Courses = () => {
                             <td className="px-6 py-4">
                                 {course.total_students}
                             </td>
-
+                            <td className="px-6 py-4">
+                                {course.EX}
+                            </td>
+                            <td className="px-6 py-4">
+                                {course.A}
+                            </td>
+                            <td className="px-6 py-4">
+                                {course.B}
+                            </td>
+                            <td className="px-6 py-4">
+                                {course.C}
+                            </td>
+                            <td className="px-6 py-4">
+                                {course.D}
+                            </td>
+                            <td className="px-6 py-4">
+                                {course.P}
+                            </td>
+                            <td className="px-6 py-4">
+                                {course.F}
+                            </td>
                         </tr>
                     ))}
                     {
