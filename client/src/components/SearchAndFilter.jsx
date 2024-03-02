@@ -43,7 +43,7 @@ const SearchandFilter = () => {
     const careerGoals = {
         "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MT', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
         "Software Development": ["CS", "MA", "EC"],
-        "Data Science / Analytics": ["MA", "CS"],
+        "Data Science / Analytics": ["MA", "CS", "AI", "ML"],
         "Finance / Consulting": ["RE", "HS", "BM", "EP", "QE"],
         "Management": ["RE", "HS", "BM", "EP", "QE"],
         "Quantitative Trading": ["CS", "MA", "EC"],
