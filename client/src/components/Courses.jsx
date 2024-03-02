@@ -1,9 +1,10 @@
 import { useRecoilValue } from "recoil";
 import { searchedState } from "../store/atoms/subject.atom";
 import { searchedString } from "../store/atoms/search.atom";
-
 const Courses = () => {
     const courses = useRecoilValue(searchedState);
+    console.log('a')
+    console.log(courses)
     const searchString = useRecoilValue(searchedString);
     const highlightName = (name) => {
         const index = name.toLowerCase().indexOf(searchString.toLowerCase());

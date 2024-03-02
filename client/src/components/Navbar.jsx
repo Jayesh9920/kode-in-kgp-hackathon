@@ -1,7 +1,21 @@
 import { Outlet } from "react-router-dom";
 import Profile from "./Profile";
-
+import { useNavigate } from "react-router-dom";
+import { createClient } from "@supabase/supabase-js";
+const Project_URL = import.meta.env.VITE_APP_PROJECT_URL;
+const Anon_KEY = import.meta.env.VITE_APP_ANON_KEY;
+const supabase = createClient(Project_URL, Anon_KEY);
 const NavBar = () => {
+    const navigate = useNavigate();
+    const SignOut = async (e) => {
+        const { error } = await supabase.auth.signOut()
+        if(error!=null){
+            alert(error.message)
+        }else{
+            navigate("/login");
+        }
+        
+    }
     return (
         <div>
         <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -16,10 +30,18 @@ const NavBar = () => {
                         </svg>
                         <span className="sr-only">Search</span>
                     </button>
+                    <button href="#" onClick={SignOut} className=" text-white dark:text-black bg-blue-600 dark:bg-blue-500 hover:underline font-medium text-lg inline-flex items-center">SignOut
+                                <svg className="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                                </svg>
+                            </button>
+
+                    
                     <div className="relative hidden md:block">
                        
                         <Profile />
                     </div>
+        
                     <button data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
                         <span className="sr-only">Open main menu</span>
                         <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -27,6 +49,7 @@ const NavBar = () => {
                         </svg>
                     </button>
                 </div>
+                
                 <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
                     <div className="relative mt-3 md:hidden">
                         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

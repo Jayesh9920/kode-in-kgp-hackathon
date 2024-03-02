@@ -19,6 +19,7 @@ const defaultValue = [
     }
 ]
 
+
 export const courseState = atom({
     key: "courseState" , 
     default: defaultValue, 

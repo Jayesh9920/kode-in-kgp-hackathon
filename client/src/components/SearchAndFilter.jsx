@@ -75,6 +75,7 @@ const SearchandFilter = () => {
 
     return (
         <div>
+            
             <input type="number" placeholder="CGPA" className="p-3 rounded-xl m-2 border dark:border-gray-600 w-36" value={cgpa} onChange={handleCgpaInput} />
             <select name="careerGoal" id="careerGoal" className="p-3 rounded-xl m-3 border dark:border-gray-600" onChange={handleCareerGoal}>
                 {Object.keys(careerGoals).map((goal, index) => (
