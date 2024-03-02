@@ -1,10 +1,13 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
+import { useRecoilValue } from "recoil";
+import { userState } from "../store/atoms/user.atom";
 const Project_URL = import.meta.env.VITE_APP_PROJECT_URL;
 const Anon_KEY = import.meta.env.VITE_APP_ANON_KEY;
 const supabase = createClient(Project_URL, Anon_KEY);
 const NavBar = () => {
+    const currUser = useRecoilValue(userState)
     const navigate = useNavigate();
     const SignOut = async () => {
         const { error } = await supabase.auth.signOut()
@@ -15,8 +18,7 @@ const NavBar = () => {
         }
 
     }
-    // if user is on login page then dont show signout button
-    console.log(useLocation().pathname);
+
     return (
         <div>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -25,37 +27,19 @@ const NavBar = () => {
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Breath Recomendation System</span>
                     </a>
                     <div className="flex md:order-2">
-                        <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 me-1">
-                            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                            <span className="sr-only">Search</span>
-                        </button>
+                        <div className="flex items-center space-x-4 p-3">
+                        {
+                            
+                            currUser && currUser.session.user.email
+                        }
+                        </div>
                         {useLocation().pathname != "/login" &&
-                            <button href="#" onClick={SignOut} className=" text-white  bg-blue-600 dark:bg-blue-500 hover:underline font-medium text-lg inline-flex items-center">SignOut
+                            <button href="#" onClick={SignOut} className=" text-white  bg-blue-600 dark:bg-blue-500 hover:bg-blue-500 dark:hover:bg-blue-600 font-medium text-lg inline-flex items-center p-4">SignOut
                                 <svg className="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                                 </svg>
                             </button>
                         }
-
-                        <button data-collapse-toggle="navbar-search" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
-                            <span className="sr-only">Open main menu</span>
-                            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
-                        <div className="relative mt-3 md:hidden">
-                            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                                <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                                </svg>
-                            </div>
-                            <input type="text" id="search-navbar" className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search..." />
-                        </div>
                     </div>
                 </div>
             </nav>
