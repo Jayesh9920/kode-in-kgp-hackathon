@@ -1,13 +1,12 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
-import { useEffect } from "react";
 const Project_URL = import.meta.env.VITE_APP_PROJECT_URL;
 const Anon_KEY = import.meta.env.VITE_APP_ANON_KEY;
 const supabase = createClient(Project_URL, Anon_KEY);
 const NavBar = () => {
     const navigate = useNavigate();
-    const SignOut = async (e) => {
+    const SignOut = async () => {
         const { error } = await supabase.auth.signOut()
         if (error != null) {
             alert(error.message)
@@ -33,7 +32,7 @@ const NavBar = () => {
                             <span className="sr-only">Search</span>
                         </button>
                         {useLocation().pathname != "/login" &&
-                            <button href="#" onClick={SignOut} className=" text-white dark:text-black bg-blue-600 dark:bg-blue-500 hover:underline font-medium text-lg inline-flex items-center">SignOut
+                            <button href="#" onClick={SignOut} className=" text-white  bg-blue-600 dark:bg-blue-500 hover:underline font-medium text-lg inline-flex items-center">SignOut
                                 <svg className="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                                 </svg>

@@ -20,6 +20,7 @@ const SearchandFilter = () => {
         "Civil Engineering": "CE",
         "Computer Science and Engineering": "CS",
         "Cryogenic Engineering": "CR",
+        "Electornics and Electrical Comunication": "EC",
         "Electrical Engineering": "EE",
         "Energy Science and Engineering": "EN",
         "Environmental Studies": "EV",
@@ -32,6 +33,7 @@ const SearchandFilter = () => {
         "Mining Engineering": "MI",
         "Ocean Engineering and Naval Architecture": "NA",
         "Physics": "PH",
+        "Quality Engineering": "QE",
         "Reliability Engineering": "RE",
         "Rubber Technology": "RT",
         "Geology": "GG",
@@ -39,13 +41,13 @@ const SearchandFilter = () => {
     
 
     const careerGoals = {
-        "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MMT', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
-        "Software Development": ["CS", "MA", "ECE"],
+        "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MT', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
+        "Software Development": ["CS", "MA", "EC"],
         "Data Science / Analytics": ["MA", "CS"],
-        "Finance / Consulting": ["RE", "HS", "BM", "EP"],
-        "Management": ["RE", "HS", "BM", "EP"],
+        "Finance / Consulting": ["RE", "HS", "BM", "EP", "QE"],
+        "Management": ["RE", "HS", "BM", "EP", "QE"],
         "Quantitative Trading": ["CS", "MA", "EC"],
-        "Embedded system": ["CS","MA" ,"ECE", "EE"],
+        "Embedded system": ["CS","MA" ,"EC", "EE"],
         "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MT", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
     };
 
