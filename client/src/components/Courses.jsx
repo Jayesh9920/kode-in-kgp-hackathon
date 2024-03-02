@@ -18,9 +18,22 @@ const Courses = () => {
             </>
         )
     }
+    const highlightCode = (code) => {
+        const index = code.toLowerCase().indexOf(searchString.toLowerCase());
+        if (index === -1) {
+            return code;
+        }
+        return (
+            <>
+                {code.substring(0, index)}
+                <span className="bg-blue-600 text-white  dark:bg-blue-500 dark:text-white">{code.substring(index, index + searchString.length)}</span>
+                {code.substring(index + searchString.length)}
+            </>
+        )
+    }
 
     return (
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-screen-lg mx-auto border dark:border-gray-600"  style={{ maxHeight: '75vh' }}>
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg max-w-screen-lg mx-auto border dark:border-gray-600" style={{ maxHeight: '75vh' }}>
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
                     <tr>
@@ -31,13 +44,16 @@ const Courses = () => {
                             Subject name
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Credit
+                            Avg Grade
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Avg CGPA
+                            Median Grade
                         </th>
                         <th scope="col" className="px-6 py-3">
-                            Details
+                            Mode Grade
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Students Enrolled
                         </th>
                     </tr>
                 </thead>
@@ -45,20 +61,26 @@ const Courses = () => {
                     {courses.length > 0 && courses.map((course, index) => (
                         <tr key={index} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {course.code}
+                                {highlightCode(course.sub_code)}
                             </th>
                             <td className="px-6 py-4">
-                                {highlightName(course.name)}
+                                {/* remove the frist 8 characters from begining */}
+                                {highlightName(course.course.substring(8))}
+                            </td>
+
+                            <td className="px-6 py-4">
+                                {course.avg}
                             </td>
                             <td className="px-6 py-4">
-                                {course.credit}
+                                {course.median}
                             </td>
                             <td className="px-6 py-4">
-                                {course.avgCgpa}
+                                {course.mode}
                             </td>
                             <td className="px-6 py-4">
-                                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Details</a>
+                                {course.total_students}
                             </td>
+
                         </tr>
                     ))}
                     {

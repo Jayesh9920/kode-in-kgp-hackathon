@@ -1,64 +1,21 @@
 import { atom } from "recoil";
 const defaultValue = [
     {
-        code: 'ME1234',
-        name: 'Basic Engineering Mechanics',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'PH1234',
-        name: 'Physics of Waves',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'CH1234',
-        name: 'Chemistry',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'MA1234',
-        name: 'Advanced Calculus',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'CS1234',
-        name: 'Data Structures',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'CS1235',
-        name: 'Data Base management',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'CS1236',
-        name: 'Operating Systems',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'CS1237',
-        name: 'Computer Networks',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'CS1238',
-        name: 'Artificial Intelligence',
-        credit: 4,
-        avgCgpa: 8.9,
-    },
-    {
-        code: 'CS1239',
-        name: 'Machine Learning',
-        credit: 4,
-        avgCgpa: 8.99,
+        A: 13,
+        B: 13,
+        C: 13,
+        D: 13,
+        EX: 13,
+        F: 13,
+        P: 13,
+        ID: 1,
+        avg: 7.4,
+        median: 7.4,
+        mode: 7.4,
+        dept_code: "AE",
+        course: "AE12345-Basic Aerospace Engineering",
+        sub_code: "AE12345",
+        total_students: 13,
     }
 ]
 

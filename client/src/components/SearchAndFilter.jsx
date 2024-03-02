@@ -31,14 +31,14 @@ const SearchandFilter = () => {
     
 
     const careerGoals = {
-        "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MMT', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
+        "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MM', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
         "Software Development": ["CS", "MA", "EE"],
         "Data Science / Analytics": ["CS", "MA", "EE", "PH", "CY"],
         "Finance / Consulting": ["CS", "MA", "EE", "PH", "CY"],
         "Management": ["CS", "MA", "EE", "PH", "CY"],
         "Quantitative Trading": ["CS", "MA", "EE", "PH", "CY"],
         "Embedded system": ["CS", "EE", "MA"],
-        "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MMT", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
+        "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MM", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
     };
 
     const handleCgpaInput = (e) => {
@@ -52,22 +52,26 @@ const SearchandFilter = () => {
 
     const handleCareerGoal = (e) => {
         const selectedGoal = e.target.value;
-        const filteredSubject = allSubjects.filter(subject => careerGoals[selectedGoal].includes(subject.code.substring(0, 2)));
+        const filteredSubject = allSubjects.filter(subject => careerGoals[selectedGoal].includes(subject.dept_code));
         setFilteredSubjects(filteredSubject);
     };
 
     const handleSearch = (e) => {
         const searchInput = e.target.value.toLowerCase();
         setSearchString(searchInput);
-        const filteredSubject = allSubjects.filter(subject => subject.name.toLowerCase().includes(searchInput));
+        const filteredSubject = allSubjects.filter(subject => subject.course.toLowerCase().includes(searchInput));
         setFilteredSubjects(filteredSubject);
     };
 
     const handleFilter = (e) => {
         const selectedDepartment = e.target.value;
-        const filteredSubject = allSubjects.filter(subject => subject.code.startsWith(coursesToDepartment[selectedDepartment]));
+        if (selectedDepartment === "All Departments") {
+            setFilteredSubjects(allSubjects);
+            return;
+        }
+        const filteredSubject = allSubjects.filter(subject => subject.dept_code=== coursesToDepartment[selectedDepartment]);
         setFilteredSubjects(filteredSubject);
-    };
+    }
 
     return (
         <div>
