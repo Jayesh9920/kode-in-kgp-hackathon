@@ -24,9 +24,10 @@ const Dashboard = () => {
 
     const checkuser = async () => {
         const { data } = await supabase.auth.getSession()
-        setUser(data)
         if (data['session'] == null) {
             navigate("/login")
+        }else{
+            setUser(data)
         }
     }
 
