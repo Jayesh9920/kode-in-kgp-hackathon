@@ -35,7 +35,7 @@ const NavBar = () => {
                         }
                         </div>
                         {useLocation().pathname != "/login" &&
-                            <button href="#" onClick={SignOut} className=" text-white  bg-blue-600 dark:bg-blue-500 hover:bg-blue-500 dark:hover:bg-blue-600 font-medium text-lg inline-flex items-center p-4">SignOut
+                            <button href="#" onClick={SignOut} className=" text-white  bg-red-600 dark:bg-red-500 hover:bg-red-500 dark:hover:bg-red-600 font-medium text-lg inline-flex items-center p-2">Sign Out
                                 <svg className="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
                                 </svg>
