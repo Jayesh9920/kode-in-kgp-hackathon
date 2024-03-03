@@ -8,7 +8,7 @@ const Anon_KEY = import.meta.env.VITE_APP_ANON_KEY;
 const supabase = createClient(Project_URL, Anon_KEY);
 const Courses = () => {
     const [courses, setCourses] = useRecoilState(searchedState);
-    const [allCourses, setAllCourses] = useRecoilState(courseState)
+    const [, setAllCourses] = useRecoilState(courseState)
     const searchString = useRecoilValue(searchedString);
     const [loded, setLoded] = useState(false);
 

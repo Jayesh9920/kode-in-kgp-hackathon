@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { userState } from "../store/atoms/user.atom";
 const Project_URL = import.meta.env.VITE_APP_PROJECT_URL;
 const Anon_KEY = import.meta.env.VITE_APP_ANON_KEY;

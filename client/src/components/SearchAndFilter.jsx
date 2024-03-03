@@ -6,7 +6,7 @@ import { searchedString } from "../store/atoms/search.atom";
 const SearchandFilter = () => {
     const [searchString, setSearchString] = useRecoilState(searchedString);
     const allSubjects = useRecoilValue(courseState);
-    const [selectedsub, setFilteredSubjects] = useRecoilState(searchedState);
+    const [, setFilteredSubjects] = useRecoilState(searchedState);
     const [cgpa, setCgpa] = useState("");
 
     const coursesToDepartment = {
@@ -45,13 +45,13 @@ const SearchandFilter = () => {
         "Select Career Goal": Object.values(coursesToDepartment),
         "Software Development": ["CS", "MA", "EC"],
         "Data Science / Analytics": ["MA", "CS", "AI", "ML"],
-        "Finance / Consulting": ["RE", "HS", "BM", "EP", "QE"],
-        "Management": ["RE", "HS", "BM", "EP", "QE"],
+        "Finance / Consulting": ["RE", "HS", "BM", "EP", "QE", "IM", "RD"],
+        "Management": ["RE", "HS", "BM", "EP", "QE", "IM", "RD"],
         "Quantitative Trading": ["CS", "MA", "EC"],
-        "Embedded system": ["CS","MA" ,"EC", "EE", "IE"],
+        "Hardware / Embedded system": ["CS","MA" ,"EC", "EE", "IE"],
+        "Research": ["MA", "CS", "EC", "EE", "ME", "CE", "CH", "NA", "PH", "CY", "BT"],
         "Core": ["ME", "CE", "EE", "CH", "AE", "BT", "MT", "NA", "PH", "CY", "HS", "AG", "MI"],
     };
-
 
 //  reccomment those courses which are greater than the cgpa
 // validate cgpa should be between 0 and 10
