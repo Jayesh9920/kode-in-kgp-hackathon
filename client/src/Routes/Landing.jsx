@@ -64,7 +64,7 @@ const Landing = () => {
     
             } else {
                 const { errors } = await supabase.from('UserData').insert({ email: email, name: 'jayesh', roll: roll, cg: cg, goal: goals})
-                alert('Account created please verify email & login')
+                alert("Account successfully created! please check your Institute email's inbox and click over the verification url")
             }
         }else{
             if(!email.endsWith('iitkgp.ac.in')){
