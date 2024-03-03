@@ -27,6 +27,7 @@ const SearchandFilter = () => {
         "Exploration Geophysics": "EX",
         "Humanities and Social Sciences": "HS",
         "Industrial Engineering and Management": "IM",
+        "Instrumentation Engineering": "IE",
         "Mathematics and Computing": "MA",
         "Mechanical Engineering": "ME",
         "Metallurgical and Materials Engineering": "MT",
@@ -41,14 +42,14 @@ const SearchandFilter = () => {
     
 
     const careerGoals = {
-        "Select Career Goal": ['CS', 'EE', 'ME', 'CE', 'CH', 'AE', 'BT', 'MT', 'NA', 'PH', 'CY', 'MA', 'HS', 'AR', 'AG', 'MI'],
+        "Select Career Goal": Object.values(coursesToDepartment),
         "Software Development": ["CS", "MA", "EC"],
         "Data Science / Analytics": ["MA", "CS", "AI", "ML"],
         "Finance / Consulting": ["RE", "HS", "BM", "EP", "QE"],
         "Management": ["RE", "HS", "BM", "EP", "QE"],
         "Quantitative Trading": ["CS", "MA", "EC"],
-        "Embedded system": ["CS","MA" ,"EC", "EE"],
-        "Core": ["CS", "EE", "ME", "CE", "CH", "AE", "BT", "MT", "NA", "PH", "CY", "MA", "HS", "AR", "AG", "MI"]
+        "Embedded system": ["CS","MA" ,"EC", "EE", "IE"],
+        "Core": ["ME", "CE", "EE", "CH", "AE", "BT", "MT", "NA", "PH", "CY", "HS", "AG", "MI"],
     };
 
 
@@ -58,12 +59,12 @@ const SearchandFilter = () => {
         const cgpaInput = e.target.value;
         if (cgpaInput === "" || (cgpaInput >= 0 && cgpaInput <= 10)) {
             setCgpa(cgpaInput);
-            const filteredSubject = allSubjects.filter(subject => subject.median > cgpaInput);
+            const filteredSubject = allSubjects.filter(subject => subject.avg > cgpaInput);
             setFilteredSubjects(filteredSubject);
         }
     };
 
-const handleCareerGoal = (e) => {
+    const handleCareerGoal = (e) => {
         const selectedGoal = e.target.value;
         const filteredSubject = allSubjects.filter(subject => careerGoals[selectedGoal].includes(subject.dept_code));
         setFilteredSubjects(filteredSubject);
@@ -76,7 +77,7 @@ const handleCareerGoal = (e) => {
             setFilteredSubjects(allSubjects);
             return;
         }
-        const filteredSubject = selectedsub.filter(subject => subject.course.toLowerCase().includes(searchInput));
+        const filteredSubject = allSubjects.filter(subject => subject.course.toLowerCase().includes(searchInput));
         setFilteredSubjects(filteredSubject);
     };
 
@@ -99,7 +100,7 @@ const handleCareerGoal = (e) => {
                     <option key={index} value={goal} className="p-3 rounded-xl m-3">{goal}</option>
                 ))}
             </select>
-            <input type="text" placeholder="Search by course name" className="p-3 rounded-xl m-3 border dark:border-gray-600" value={searchString} onChange={handleSearch} />
+            <input type="text" placeholder="Search by name / code" className="p-3 rounded-xl m-3 border dark:border-gray-600" value={searchString} onChange={handleSearch} />
             <select name="department" id="department" className="p-3 rounded-xl m-3 border dark:border-gray-600" onChange={handleFilter}>
                 {Object.keys(coursesToDepartment).map((department, index) => (
                     <option key={index} value={department} className="p-3 rounded-xl m-3">{department}</option>

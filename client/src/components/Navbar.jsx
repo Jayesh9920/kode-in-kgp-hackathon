@@ -1,19 +1,20 @@
 import { Outlet, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { createClient } from "@supabase/supabase-js";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { userState } from "../store/atoms/user.atom";
 const Project_URL = import.meta.env.VITE_APP_PROJECT_URL;
 const Anon_KEY = import.meta.env.VITE_APP_ANON_KEY;
 const supabase = createClient(Project_URL, Anon_KEY);
 const NavBar = () => {
-    const currUser = useRecoilValue(userState)
+    const [currUser, setCurrentUser] = useRecoilState(userState)
     const navigate = useNavigate();
     const SignOut = async () => {
         const { error } = await supabase.auth.signOut()
         if (error != null) {
             alert(error.message)
         } else {
+            setCurrentUser(null)
             navigate("/login");
         }
 
